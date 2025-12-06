@@ -1,5 +1,5 @@
 const clientId = "0af19046848d4406a95c670c0257af84"; /*change this later*/
-const redirectUri = "https://finalwwd330.netlify.app/";/*change this later too, working on netlify*/
+const redirectUri = "https://finalwwd330.netlify.app/callback.html";/*change this later too, working on netlify*/
 
 const scopes = [
   "user-read-private",
