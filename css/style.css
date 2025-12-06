@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #6C63FF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.subtitle {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.login-btn {
+    background: #FF6584;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    opacity: .8;
+    transform: scale(1.05);
+}

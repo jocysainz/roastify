@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Roast Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Your Dashboard</h1>
+        <button id="logout-btn">Logout</button>
+    </header>
+
+    <section id="loading">Fetching your Spotify data...</section>
+
+    <section id="user-info" class="hidden">
+        <img id="user-img" />
+        <h2 id="user-name"></h2>
+    </section>
+
+    <section id="top-artists" class="hidden">
+        <h3>Your Top Artists</h3>
+        <ul id="artists-list"></ul>
+    </section>
+
+    <section id="top-tracks" class="hidden">
+        <h3>Your Top Tracks</h3>
+        <ul id="tracks-list"></ul>
+    </section>
+
+    <button id="generate-roast" class="hidden">Generate My Roast</button>
+
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

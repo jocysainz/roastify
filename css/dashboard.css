@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #F8F6FF;
+}
+
+header {
+    background: #6C63FF;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#loading {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+section {
+    padding: 20px;
+}
+
+#user-info img {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #2D2A55;
+}
