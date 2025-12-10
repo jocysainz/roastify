@@ -9,44 +9,43 @@
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to Your Dashboard</h1>
-        <button id="logout-btn">Logout</button>
-    </header>
+    <div id="main-container">
+        <header>
+            <h1>Welcome to Your Dashboard</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
 
-    <section id="loading">
-        <div class="loading-container">
+        <section id="loading">
             <div class="spinner"></div>
             <p>Fetching your Spotify data...</p>
-        </div>
-    </section>
+        </section>
 
+        <section id="user-info" class="hidden">
+            <img id="user-img" />
+            <h2 id="user-name"></h2>
+        </section>
 
-    <section id="user-info" class="hidden">
-        <img id="user-img" />
-        <h2 id="user-name"></h2>
-    </section>
+        <section id="top-artists" class="hidden">
+            <h3>Your Top Artists</h3>
+            <ul id="artists-list"></ul>
+        </section>
 
-    <section id="top-artists" class="hidden">
-        <h3>Your Top Artists</h3>
-        <ul id="artists-list"></ul>
-    </section>
+        <section id="top-tracks" class="hidden">
+            <h3>Your Top Tracks</h3>
+            <ul id="tracks-list"></ul>
+        </section>
 
-    <section id="top-tracks" class="hidden">
-        <h3>Your Top Tracks</h3>
-        <ul id="tracks-list"></ul>
-    </section>
+        <section id="roast-card-section" class="hidden">
+            <div id="roast-card" class="card">
+                <h2 id="roast-title">Your Music Roast</h2>
+                <div id="roast-artists"></div>
+                <div id="roast-tracks"></div>
+                <button id="download-roast">Download Roast</button>
+            </div>
+        </section>
 
-    <section id="roast-card-section" class="hidden">
-        <div id="roast-card" class="card">
-            <h2 id="roast-title">Your Music Roast</h2>
-            <div id="roast-artists"></div>
-            <div id="roast-tracks"></div>
-            <button id="download-roast">Download Roast</button>
-        </div>
-    </section>
-
-    <button id="generate-roast" class="hidden">Generate My Roast</button>
+        <button id="generate-roast" class="hidden">Generate My Roast</button>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/roastCard.js"></script>

@@ -3,22 +3,32 @@ body {
     font-family: 'Nunito', sans-serif;
     background-color: #f0f0f3;
     color: #2D2A55;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 header {
     background-color: #6C63FF;
     color: #fafaff;
     padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
     font-size: 1.8rem;
-    align-items: center;
 }
 
 button {
@@ -54,6 +64,7 @@ button:hover {
     text-align: center;
     min-height: 200px;
     padding: 40px;
+    width: 100%;
     font-size: 1.2rem;
 }
 
