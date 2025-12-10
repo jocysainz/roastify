@@ -1,12 +1,27 @@
-const hash = window.location.hash.substring(1);
-const params = new URLSearchParams(hash);
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get("code");
+const codeVerifier = localStorage.getItem("code_verifier");
 
-const accessToken = params.get("access_token");
-
-if (accessToken) {
-  localStorage.setItem("spotify_access_token", accessToken);
-
-  window.location.href = "dashboard.html";
-} else {
-  alert("Error retrieving Spotify token.");
+if (!code) {
+  alert("No authorization code found.");
+  throw new Error("Missing code");
 }
+
+async function getAccessToken() {
+  const response = await fetch("/.netlify/functions/exchange_token", {
+    method: "POST",
+    body: JSON.stringify({ code, code_verifier: codeVerifier }),
+  });
+
+  const data = await response.json();
+
+  if (data.access_token) {
+    localStorage.setItem("spotify_access_token", data.access_token);
+    window.location.href = "dashboard.html";
+  } else {
+    console.error(data);
+    alert("Failed to get access token");
+  }
+}
+
+getAccessToken();
