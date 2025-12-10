@@ -16,34 +16,31 @@
 
     <section id="loading">Fetching your Spotify data...</section>
 
-    <section id="user-roast-group" class="hidden">
-        <div id="user-info">
-            <img id="user-img" />
-            <h2 id="user-name"></h2>
-            <button id="generate-roast">Generate My Roast</button>
-        </div>
-
-        <section id="roast-card-section" class="hidden">
-            <div id="roast-card" class="card">
-                <h2 id="roast-title">Your Music Roast</h2>
-                <div id="roast-artists"></div>
-                <div id="roast-tracks"></div>
-                <button id="download-roast">Download Roast</button>
-            </div>
-        </section>
+    <section id="user-info" class="hidden">
+        <img id="user-img" />
+        <h2 id="user-name"></h2>
     </section>
 
-    <div id="two-column" class="hidden">
-        <section id="top-artists">
-            <h3>Your Top Artists</h3>
-            <ul id="artists-list"></ul>
-        </section>
+    <section id="top-artists" class="hidden">
+        <h3>Your Top Artists</h3>
+        <ul id="artists-list"></ul>
+    </section>
 
-        <section id="top-tracks">
-            <h3>Your Top Tracks</h3>
-            <ul id="tracks-list"></ul>
-        </section>
-    </div>
+    <section id="top-tracks" class="hidden">
+        <h3>Your Top Tracks</h3>
+        <ul id="tracks-list"></ul>
+    </section>
+
+    <section id="roast-card-section" class="hidden">
+        <div id="roast-card" class="card">
+            <h2 id="roast-title">Your Music Roast</h2>
+            <div id="roast-artists"></div>
+            <div id="roast-tracks"></div>
+            <button id="download-roast">Download Roast</button>
+        </div>
+    </section>
+
+    <button id="generate-roast" class="hidden">Generate My Roast</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/roastCard.js"></script>
