@@ -52,7 +52,6 @@ async function getTopArtists() {
         const li = document.createElement("li");
         li.textContent = artist.name;
         artistsListEl.appendChild(li);
-
         const tags = await fetchLastFmTags(artist.name);
         artistData.push({ name: artist.name, tags });
     }
@@ -69,7 +68,6 @@ async function getTopTracks() {
         const li = document.createElement("li");
         li.textContent = `${track.name} — ${track.artists.map(a => a.name).join(", ")}`;
         tracksListEl.appendChild(li);
-
         trackIds.push(track.id);
         trackData.push({ name: track.name, artists: track.artists.map(a => a.name) });
     }
@@ -88,17 +86,16 @@ async function loadDashboard() {
         const profilePromise = getUserProfile();
         const artistsPromise = getTopArtists();
         const tracksPromise = getTopTracks();
-
         const [_, artists, { trackIds, trackData }] = await Promise.all([
             profilePromise,
             artistsPromise,
             tracksPromise
         ]);
-
         const audioFeatures = await getAudioFeatures(trackIds);
-
+        console.log("Top Artists:", artists);
+        console.log("Top Tracks:", trackData);
+        console.log("Audio Features:", audioFeatures);
         window.roastData = { artists, trackData, audioFeatures };
-
         generateRoastBtn.classList.remove("hidden");
     } catch (err) {
         alert("Error fetching Spotify data: " + err.message);
