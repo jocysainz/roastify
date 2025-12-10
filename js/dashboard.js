@@ -97,13 +97,9 @@ async function loadDashboard() {
 
         const audioFeatures = await getAudioFeatures(trackIds);
 
-        console.log("Top Artists with Tags:", artists);
-        console.log("Top Tracks:", trackData);
-        console.log("Audio Features:", audioFeatures);
+        window.roastData = { artists, trackData, audioFeatures };
 
         generateRoastBtn.classList.remove("hidden");
-
-        window.roastData = { artists, trackData, audioFeatures };
     } catch (err) {
         alert("Error fetching Spotify data: " + err.message);
         console.error(err);
