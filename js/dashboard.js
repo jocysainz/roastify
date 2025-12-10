@@ -96,12 +96,15 @@ async function loadDashboard() {
         console.log("Top Tracks:", trackData);
         console.log("Audio Features:", audioFeatures);
         window.roastData = { artists, trackData, audioFeatures };
+
+        loadingEl.classList.add("hidden");
+        document.getElementById("user-roast-group").classList.remove("hidden");
+        document.getElementById("two-column").classList.remove("hidden");
+
         generateRoastBtn.classList.remove("hidden");
     } catch (err) {
         alert("Error fetching Spotify data: " + err.message);
         console.error(err);
-    } finally {
-        loadingEl.classList.add("hidden");
     }
 }
 
@@ -116,6 +119,7 @@ generateRoastBtn.addEventListener("click", () => {
         alert("Data not ready yet!");
         return;
     }
+    document.getElementById("roast-card-section").classList.remove("hidden");
     generateRoastCard(data);
 });
 
