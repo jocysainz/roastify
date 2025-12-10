@@ -123,8 +123,7 @@ generateRoastBtn.addEventListener("click", () => {
         alert("Data not ready yet!");
         return;
     }
-    console.log("Generating roast with data:", data);
-    alert("Roast generation coming soon!");
+    generateRoastCard(data);
 });
 
 loadDashboard();
