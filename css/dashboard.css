@@ -95,17 +95,15 @@ button:hover {
 }
 
 #two-column {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 20px auto 40px auto;
     display: flex;
     justify-content: center;
     gap: 25px;
-    flex-wrap: wrap;
 }
 
 #two-column section {
     flex: 1;
-    min-width: 220px;
     background-color: #dadae0;
     padding: 20px;
     border-radius: 12px;

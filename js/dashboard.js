@@ -6,8 +6,6 @@ const topArtistsEl = document.getElementById("top-artists");
 const artistsListEl = document.getElementById("artists-list");
 const topTracksEl = document.getElementById("top-tracks");
 const tracksListEl = document.getElementById("tracks-list");
-const topGenresEl = document.getElementById("top-genres");
-const genresListEl = document.getElementById("genres-list");
 const generateRoastBtn = document.getElementById("generate-roast");
 const logoutBtn = document.getElementById("logout-btn");
 
@@ -54,7 +52,6 @@ async function getTopArtists() {
         const li = document.createElement("li");
         li.textContent = artist.name;
         artistsListEl.appendChild(li);
-
         const tags = await fetchLastFmTags(artist.name);
         artistData.push({ name: artist.name, tags });
     }
@@ -71,7 +68,6 @@ async function getTopTracks() {
         const li = document.createElement("li");
         li.textContent = `${track.name} — ${track.artists.map(a => a.name).join(", ")}`;
         tracksListEl.appendChild(li);
-
         trackIds.push(track.id);
         trackData.push({ name: track.name, artists: track.artists.map(a => a.name) });
     }
@@ -85,33 +81,21 @@ async function getAudioFeatures(trackIds) {
     return data.audio_features;
 }
 
-async function getTopGenres(artists) {
-    const genreSet = new Set();
-    artists.forEach(artist => artist.tags.forEach(tag => genreSet.add(tag)));
-
-    genresListEl.innerHTML = "";
-    genreSet.forEach(genre => {
-        const li = document.createElement("li");
-        li.textContent = genre;
-        genresListEl.appendChild(li);
-    });
-    topGenresEl.classList.remove("hidden");
-}
-
 async function loadDashboard() {
     try {
-        const [profile, artists, tracks] = await Promise.all([
-            getUserProfile(),
-            getTopArtists(),
-            getTopTracks()
+        const profilePromise = getUserProfile();
+        const artistsPromise = getTopArtists();
+        const tracksPromise = getTopTracks();
+        const [_, artists, { trackIds, trackData }] = await Promise.all([
+            profilePromise,
+            artistsPromise,
+            tracksPromise
         ]);
-
-        const { trackIds, trackData } = tracks;
         const audioFeatures = await getAudioFeatures(trackIds);
-        
+        console.log("Top Artists:", artists);
+        console.log("Top Tracks:", trackData);
+        console.log("Audio Features:", audioFeatures);
         window.roastData = { artists, trackData, audioFeatures };
-
-        await getTopGenres(artists);
 
         loadingEl.classList.add("hidden");
         document.getElementById("user-roast-group").classList.remove("hidden");
