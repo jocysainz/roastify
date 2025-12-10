@@ -36,7 +36,7 @@ button:hover {
 
 #logout-btn {
     background-color: #FF6584;
-    color: rgb(245, 243, 243);
+    color: #fafaff;
 }
 
 #generate-roast {
@@ -47,14 +47,40 @@ button:hover {
 }
 
 #loading {
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2rem;
-    min-height: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    min-height: 200px;
+    padding: 40px;
+    font-size: 1.2rem;
+}
 
+#loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #E0E0E0;
+    border-top: 5px solid #6C63FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+#loading p {
+    font-size: 1.2rem;
+    color: #2D2A55;
+    margin: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 #user-info {
@@ -103,12 +129,23 @@ ul {
 }
 
 li {
-    padding: 8px 0;
+    padding: 8px 12px;
     border-bottom: 1px solid #eeeded;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 li:last-child {
     border-bottom: none;
+}
+
+#artists-list li:hover,
+#tracks-list li:hover {
+    background-color: #6C63FF;
+    color: #fafaff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
 }
 
 #roast-card-section {
@@ -145,11 +182,17 @@ li:last-child {
     margin: 5px 0;
 }
 
+#roast-card:hover {
+    box-shadow: 0 6px 25px rgba(108, 99, 255, 0.6);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
 #download-roast {
     margin-top: 15px;
     background: #FF6584;
     border: none;
-    color: rgb(249, 249, 252);
+    color: #fafaff;
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
@@ -159,61 +202,8 @@ li:last-child {
     background: #e6557d;
 }
 
-/* Responsive layout */
 @media (max-width: 600px) {
     .card {
         padding: 15px;
     }
-}
-
-#loading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 200px;
-}
-
-#loading .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #E0E0E0;
-    border-top: 5px solid #6C63FF;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-#artists-list li,
-#tracks-list li {
-    padding: 8px 12px;
-    border-bottom: 1px solid #eeeded;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-#artists-list li:hover,
-#tracks-list li:hover {
-    background-color: #6C63FF;
-    color: #fafaff;
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
-}
-
-#roast-card:hover {
-    box-shadow: 0 6px 25px rgba(108, 99, 255, 0.6);
-    transform: translateY(-3px);
-    transition: all 0.3s ease;
 }

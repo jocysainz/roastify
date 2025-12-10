@@ -42,6 +42,9 @@ async function getUserProfile() {
     userImgEl.src = profile.images[0]?.url || "";
     userNameEl.textContent = profile.display_name;
     userInfoEl.classList.remove("hidden");
+
+    localStorage.setItem("user_name", profile.display_name);
+    localStorage.setItem("user_img", profile.images[0]?.url || "");
 }
 
 async function getTopArtists() {
@@ -92,10 +95,12 @@ async function loadDashboard() {
             tracksPromise
         ]);
         const audioFeatures = await getAudioFeatures(trackIds);
-        console.log("Top Artists:", artists);
-        console.log("Top Tracks:", trackData);
-        console.log("Audio Features:", audioFeatures);
+
         window.roastData = { artists, trackData, audioFeatures };
+        localStorage.setItem("roast_artists", JSON.stringify(artists));
+        localStorage.setItem("roast_tracks", JSON.stringify(trackData));
+        localStorage.setItem("roast_generated_at", new Date().toISOString());
+
         generateRoastBtn.classList.remove("hidden");
     } catch (err) {
         alert("Error fetching Spotify data: " + err.message);
@@ -105,8 +110,35 @@ async function loadDashboard() {
     }
 }
 
+window.addEventListener("load", () => {
+    const storedArtists = localStorage.getItem("roast_artists");
+    const storedTracks = localStorage.getItem("roast_tracks");
+    const storedName = localStorage.getItem("user_name");
+    const storedImg = localStorage.getItem("user_img");
+
+    if (storedArtists && storedTracks && storedName && storedImg) {
+        userImgEl.src = storedImg;
+        userNameEl.textContent = storedName;
+        userInfoEl.classList.remove("hidden");
+
+        const data = {
+            artists: JSON.parse(storedArtists),
+            trackData: JSON.parse(storedTracks)
+        };
+        window.roastData = data;
+        generateRoastCard(data);
+        generateRoastBtn.classList.remove("hidden");
+    }
+});
+
 logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("spotify_access_token");
+    localStorage.removeItem("code_verifier");
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_img");
+    localStorage.removeItem("roast_artists");
+    localStorage.removeItem("roast_tracks");
+    localStorage.removeItem("roast_generated_at");
     window.location.href = "index.html";
 });
 
@@ -117,6 +149,10 @@ generateRoastBtn.addEventListener("click", () => {
         return;
     }
     generateRoastCard(data);
+
+    localStorage.setItem("roast_artists", JSON.stringify(data.artists));
+    localStorage.setItem("roast_tracks", JSON.stringify(data.trackData));
+    localStorage.setItem("roast_generated_at", new Date().toISOString());
 });
 
 loadDashboard();
