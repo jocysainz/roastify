@@ -59,3 +59,5 @@ downloadBtn.addEventListener("click", async () => {
         alert("Failed to capture roast card: " + err.message);
     }
 });
+
+window.generateRoastCard = generateRoastCard;
